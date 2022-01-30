@@ -1,0 +1,46 @@
+.bg-image-landing {
+  background-image: url("images/landing_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.gradient-text-clip {
+  background-image: linear-gradient(
+    to right,
+    #682b97,
+    #276d9b,
+    #329b3b,
+    #dde80b,
+    #f8a60d,
+    #db1553
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.text-stroke-black {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+.text-stroke-black-2 {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+.text-stroke-white {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+.text-stroke-white-2 {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
