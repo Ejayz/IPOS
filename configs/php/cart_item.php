@@ -27,12 +27,12 @@ $result = $stmt->get_result();
 
 if ($result->num_rows != 0) {
     $row = $result->fetch_assoc();
-    $identifier = $row["ITEM_ID"] . '' . generateUid();
+    $identifier = $row["ITEM_ID"] . ':' . generateUid();
     $price = getTotalPrice($item_quantity, $row["ITEM_PRICE"]);
     echo '<tr id="' .  $identifier . '" class="items_data border-2 h-6">' .
-        '<td class="text-center">' . $item_quantity . '</td>' .
-        '<td class="text-center">' . $row["ITEM_DESCRIPTION"] . '</td>' .
-        '<td class="text-center"> &#8369; ' . $price . '</td>' .
-        '<td class="text-center"><span onclick="removeItem(\'' . $identifier . '\')" class="hover:bg-blue-500 cursor-pointer">Remove</span>|<span onclick="editQuantity(\'' . $identifier . '\')" class="hover:bg-blue-500 cursor-pointer">Edit Quantity</span></td> ' .
+        '<td class="item_quantity text-center">' . $item_quantity . '</td>' .
+        '<td class="item_description text-center">' . $row["ITEM_NAME"] . " " . $row["ITEM_DESCRIPTION"] . '</td>' .
+        '<td class="item_price text-center">&#8369; ' . $price . '</td>' .
+        '<td class="item_action text-center"><span onclick="removeItem(\'' . $identifier . '\')" class="hover:bg-blue-500 cursor-pointer">Remove</span>|<span onclick="editQuantity(\'' . $identifier . '\')" class="hover:bg-blue-500 cursor-pointer">Edit Quantity</span></td> ' .
         '</tr>';
 }

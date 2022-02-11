@@ -1,2 +1,0 @@
-# IPOS
- InterConnectedPointOfSales
