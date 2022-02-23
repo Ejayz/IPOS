@@ -24,6 +24,7 @@ if (!isset($_SESSION["user_id"])) {
 </head>
 
 <body id="#body">
+    <input id="token_natural" value="" hidden>
     <span type="text" id="link" hidden></span>
     <div id="notification-banner-container" class="w-1/4 hidden z-50 absolute right-0 h-screen overflow-y-hidden">
     </div>
@@ -32,8 +33,8 @@ if (!isset($_SESSION["user_id"])) {
             <p>Enter item quantity</p>
             <input id="item_quantity" type="number" placeholder="Quantity" class="focus:outline-none mr-auto ml-auto mt-2 w-3/4 h-8">
             <div class="w-full h-12 grid text-center grid-cols-2">
-                <button id="quantity-frame-ok-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-red-400">OK</button>
-                <button id="quantity-frame-cancel-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-gray-400">Cancel</button>
+                <button id="quantity-frame-ok-button" class="focus:outline-none  hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-red-400">OK</button>
+                <button id="quantity-frame-cancel-button" class="focus:outline-none  hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-gray-400">Cancel</button>
             </div>
         </div>
     </div>
@@ -55,6 +56,27 @@ if (!isset($_SESSION["user_id"])) {
             <div class="w-full h-12 grid text-center grid-cols-2">
                 <button id="cash-frame-ok-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-red-400">Continue</button>
                 <button id="cash-frame-cancel-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-gray-400">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="email-confirm-frame" class="w-full hidden  h-full grid bg-white bg-opacity-40 z-40 absolute">
+        <div class="w-1/2 bg-gray-300 text-center grid h-32 mr-auto ml-auto mt-auto mb-auto">
+            <p>Enter costumer email</p>
+            <input id="costumer-email" type="email" placeholder="Costumer Email" class="focus:outline-none mr-auto ml-auto mt-2 w-3/4 h-8">
+            <div class="w-full h-12 grid text-center grid-cols-2">
+                <button id="email-frame-ok-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-red-400">Continue</button>
+                <button id="email-frame-cancel-button" class="focus:outline-none hover:bg-blue-400 w-1/3 mr-auto ml-auto border-2 bg-gray-400">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="print_option" class="w-full hidden  h-full grid bg-white bg-opacity-40 z-40 absolute">
+        <div class="w-1/2 bg-gray-300 text-center grid h-32 mr-auto ml-auto mt-auto mb-auto">
+            <p>Would you like to print or email the reciept?</p>
+            <div class="w-full h-12 grid text-center grid-cols-2">
+                <button id="print_button" class="focus:outline-none hover:bg-blue-400 w-10/12 mr-auto ml-auto border-2 bg-red-400">Print</button>
+                <button id="email_button" class="focus:outline-none hover:bg-blue-400 w-10/12 mr-auto ml-auto border-2 bg-red-400">Email</button>
             </div>
         </div>
     </div>
@@ -85,6 +107,10 @@ if (!isset($_SESSION["user_id"])) {
                 <span id="nav-panel-name" class="nav-name mr-auto ml-auto mt-auto mb-auto">Logout</span>
                 <img src="assets/images/logout_user.png" class="w-12 ml-auto mr-auto mt-auto mb-auto h-12" />
             </div>
+            <div onclick="TableHandler();" class="h-16 cursor-pointer w-full grid hover:bg-blue-300 grid-cols-2 button-menu">
+                <span id="nav-panel-name" class="nav-name mr-auto ml-auto mt-auto mb-auto">TableHandker</span>
+                <img src="assets/images/logout_user.png" class="w-12 ml-auto mr-auto mt-auto mb-auto h-12" />
+            </div>
 
         </div>
         <div class="bg-gray-500 w-full text-black flex flex-col">
@@ -109,7 +135,7 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
             </div>
             <div class="w-full  h-full z-20 overflow-hidden  flex flex-row">
-                <div id="table_container" class="w-3/4 h-11/12 bg-red-300 overflow-x-hidden overflow-y-scroll">
+                <div id="table_container" class="w-3/4 h-11/12  overflow-x-hidden overflow-y-scroll">
                     <table id="purchase_data" class="w-full table-auto  h-auto">
                         <tr class="purchase_data_header h-6">
                             <th class="text-center">QTY</th>
@@ -134,7 +160,7 @@ if (!isset($_SESSION["user_id"])) {
                         <div class="w-full text-xl text-white">
                             <span class="ml-2">Change:</span><span id="change" class="cart_info"></span>
                         </div>
-                        <div class="w-full grid grid-cols-2 mt-4">
+                        <div class="w-full grid mr-auto ml-auto grid-cols-2 mt-4">
                             <button id="btn-process" class="bg-red-400 w-3/4 h-12 mr-auto ml-auto hover:bg-blue-500 focus:outline-none cursor-pointer">Process</button>
                             <button class="bg-red-400 w-3/4 h-12 mr-auto ml-auto focus:outline-none cursor-pointer">Cancel</button>
                         </div>

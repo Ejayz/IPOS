@@ -21,7 +21,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows !== 0) {
     while ($row = $result->fetch_assoc()) {
-        echo  "<div onclick=\"data('" .
+        echo  "<div onclick=\"SelectItem('" .
             $row["ITEM_ID"] .
             '\')" class="w-full h-12 results grid grid-cols-2 hover:bg-blue-500 ">' .
             '<p class=" w-full text-center  cursor-pointer">' .

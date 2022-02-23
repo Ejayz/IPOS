@@ -30,6 +30,7 @@ if ($result->num_rows != 0) {
     $identifier = $row["ITEM_ID"] . ':' . generateUid();
     $price = getTotalPrice($item_quantity, $row["ITEM_PRICE"]);
     echo '<tr id="' .  $identifier . '" class="items_data border-2 h-6">' .
+        '<td class="item_id hidden">' . $identifier . '</td>' .
         '<td class="item_quantity text-center">' . $item_quantity . '</td>' .
         '<td class="item_description text-center">' . $row["ITEM_NAME"] . " " . $row["ITEM_DESCRIPTION"] . '</td>' .
         '<td class="item_price text-center">&#8369; ' . $price . '</td>' .

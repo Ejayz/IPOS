@@ -56,3 +56,9 @@ function getTotalPrice($quantity, $item_price)
 {
     return $quantity * $item_price;
 }
+
+function idStripper($item_id)
+{
+    $data =  explode(":", $item_id);
+    return $data[0];
+}
